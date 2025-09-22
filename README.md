@@ -28,3 +28,29 @@
 ```sh
 uv init example-agent
 ```
+
+## 1.1 PyProject
+
+- install pacakges
+  - configurate with pyproject.toml
+  - create .venv, uv.lock
+
+```sh
+# add pyproject.toml
+uv sync
+```
+
+- add packages
+
+```sh
+uv add {package_name}
+```
+
+- how to run
+
+  1. IDE will run source .~
+  2. maunally run `source .venv/bin/activate`
+     - or in windows `.venv\bin\activate.ps1`
+  3. or use `uv run main.py`
+
+- install pylance on vsc
