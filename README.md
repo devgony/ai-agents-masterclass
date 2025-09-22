@@ -54,3 +54,12 @@ uv add {package_name}
   3. or use `uv run main.py`
 
 - install pylance on vsc
+
+## 1.2 Jupyter
+
+- install Jupyter extension
+- create `main.ipynb`
+
+```sh
+uv add ipykernel --dev
+```
