@@ -47,7 +47,6 @@ uv add {package_name}
 ```
 
 - how to run
-
   1. IDE will run source .~
   2. maunally run `source .venv/bin/activate`
      - or in windows `.venv\bin\activate.ps1`
@@ -62,4 +61,40 @@ uv add {package_name}
 
 ```sh
 uv add ipykernel --dev
+```
+
+# 2.Your First AI Agent
+
+## 2.0 Setup
+
+```sh
+uv init my-first-agent
+cd my-first-agent
+```
+
+```toml
+# my-first-agent/pyproject.toml
+[project]
+name = "my-first-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "openai>=1.98.0",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.0",
+]
+```
+
+```sh
+uv python pin 3.13
+uv sync
+```
+
+```sh
+OPENAI_API_KEY=xx
 ```
