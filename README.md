@@ -98,3 +98,8 @@ uv sync
 ```sh
 OPENAI_API_KEY=xx
 ```
+
+## 2.1 Your First AI Response
+
+- use cheapest model: gpt-4o-mini
+- n=10 will return 10 responses ordered by high probability
