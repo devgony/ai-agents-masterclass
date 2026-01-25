@@ -103,3 +103,9 @@ OPENAI_API_KEY=xx
 
 - use cheapest model: gpt-4o-mini
 - n=10 will return 10 responses ordered by high probability
+
+## 2.2 Parsing the Response
+
+- AI agent: A system cable of performing actions on behalf of a user
+  - not only just replying but also use set of tools user gave
+  - It just infer the Text, if it replies with function call, we are the one who have to execute it
