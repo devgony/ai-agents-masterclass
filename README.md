@@ -109,3 +109,7 @@ OPENAI_API_KEY=xx
 - AI agent: A system cable of performing actions on behalf of a user
   - not only just replying but also use set of tools user gave
   - It just infer the Text, if it replies with function call, we are the one who have to execute it
+
+## 2.3 Adding Memory
+
+- enable system memory with appending messages in While True loop
