@@ -142,5 +142,53 @@ OPENAI_API_KEY=xx
 - Flow gives more control like langGraph
 
 ```sh
-uv init news-read-agent
+uv init news-reader-agent
+```
+
+## 3.1 Your First CrewAI Agent
+
+- Crew: group of agents
+- Agent: an autonomous unit that can
+  - perform specific tasks
+  - make decisions based on its role and goal
+  - use tools to accomplish objectives
+- Tasks: detailed guide one managing and creating tasks
+
+- store prompts separately with python code in `config/*.yaml`
+
+```sh
+mkdir -p news-reader-agent/config
+touch news-reader-agent/config/agents.yaml \
+news-reader-agent/config/tasks.yaml \
+news-reader-agent/main.py
+```
+
+```python
+@CrewBase
+class TranslatorCrew:
+    @agent
+    def translator_agent(self):
+        return Agent(
+            config=self.agents_config["translator_agent"],
+        )
+
+    @task
+    def translate_task(self):
+        return Task(
+            config=self.tasks_config["translate_task"],
+        )
+
+    @task
+    def retranslate_task(self):
+        return Task(
+            config=self.tasks_config["retranslate_task"],
+        )
+
+    @crew
+    def assemble_crew(self):
+        return Crew(
+            agents=self.agents,
+            tasks=self.tasks,
+            verbose=True,
+        )
 ```
