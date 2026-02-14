@@ -125,3 +125,9 @@ OPENAI_API_KEY=xx
 
 - `**` convert json to argument assignments
 - handle optional tool_calls column with process_ai_response(message: ChatCompletionMessage)`
+
+## 2.6 Tool Results
+
+- All AI agent works same way
+  - if tool_calls, run tools and append result to messages, then call_ai() again
+  - else, just print the message content
