@@ -122,3 +122,6 @@ OPENAI_API_KEY=xx
 - model will read description and decide
 
 ## 2.5 Adding Function Calling
+
+- `**` convert json to argument assignments
+- handle optional tool_calls column with process_ai_response(message: ChatCompletionMessage)`
