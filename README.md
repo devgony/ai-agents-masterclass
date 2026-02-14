@@ -131,3 +131,16 @@ OPENAI_API_KEY=xx
 - All AI agent works same way
   - if tool_calls, run tools and append result to messages, then call_ai() again
   - else, just print the message content
+
+# 3 CrewAI: News Reader Agent
+
+## 3.0 Introduction
+
+- highest level framework in this course
+- Best for automating workflows
+- News curating agent
+- Flow gives more control like langGraph
+
+```sh
+uv init news-read-agent
+```
