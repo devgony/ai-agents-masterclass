@@ -120,3 +120,5 @@ OPENAI_API_KEY=xx
   - instead of prompt, pass TOOLS schema
 - F/W will do TOOLS later
 - model will read description and decide
+
+## 2.5 Adding Function Calling
