@@ -113,3 +113,10 @@ OPENAI_API_KEY=xx
 ## 2.3 Adding Memory
 
 - enable system memory with appending messages in While True loop
+
+## 2.4 Adding Tools
+
+- don't need to write prompt anymore
+  - instead of prompt, pass TOOLS schema
+- F/W will do TOOLS later
+- model will read description and decide
