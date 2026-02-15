@@ -213,3 +213,7 @@ def count_letters(sentence: str):
     return len(sentence)
 EOF
 ```
+
+## 3.3 News Reader Tasks and Agents
+
+- prompting is more important than coding
