@@ -312,3 +312,5 @@ def interview_prep_task(self):
 ```sh
 touch job-hunter-agent/tools.py
 ```
+
+- remove redundant text like `\n` with regex

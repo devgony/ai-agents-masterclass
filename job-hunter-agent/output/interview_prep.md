@@ -1,0 +1,1 @@
+I’m ready to help you zero in on the best-fit role—but to do that, I need to see your full RankedJobList (each job’s complete fields plus its match_score and the reason). Could you please paste that list here? Once I have it, I’ll evaluate each opportunity, recommend the single most aligned role, and build out your tailored interview prep.

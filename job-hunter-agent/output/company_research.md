@@ -1,0 +1,1 @@
+I’m happy to help you pick the best-fit role—but I’ll need the full `RankedJobList` (including each job’s fields, its `match_score`, and the reasoning behind it) to proceed. Could you please paste that list here? Once I have it, I can recommend the single best job and justify the choice.
