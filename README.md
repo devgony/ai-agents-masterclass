@@ -283,6 +283,7 @@ mv job-hunter-agent/hello.py job-hunter-agent/main.py
 
 ## 4.2 Context And Structured Outputs
 
+- agent is just role playing, task is more important - analyze carefully and write good prompts for tasks
 - Structured output with Pydantic models can increase reliability of results
 
 ```sh
@@ -302,4 +303,12 @@ def interview_prep_task(self):
             self.company_research_task(),
         ],
     )
+```
+
+## 4.3 Firecrawl Tool
+
+- output_pydantic can convert firecrawl output to pydantic model
+
+```sh
+touch job-hunter-agent/tools.py
 ```
