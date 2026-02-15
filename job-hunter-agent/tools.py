@@ -10,7 +10,14 @@ from crewai.tools import tool
 
 @tool
 def web_search_tool(query: str):
-    """Search the web using Firecrawl API and return cleaned markdown results for the given query."""
+    """
+    Web Search Tool.
+    Args:
+        query: str
+            The query to search the web for.
+    Returns
+        A list of search results with the website content in Markdown format.
+    """
     url = "https://api.firecrawl.dev/v2/search"
     api_key = os.getenv("FIRECRAWL_API_KEY")
 

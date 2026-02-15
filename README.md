@@ -314,3 +314,27 @@ touch job-hunter-agent/tools.py
 ```
 
 - remove redundant text like `\n` with regex
+
+## 4.4 Knowledge Sources
+
+- give resume to agents
+
+```python
+# main.py
+resume_knowledge = TextFileKnowledgeSource(
+    file_path=[
+        "resume.txt",
+    ]
+)
+
+
+@CrewBase
+class JobHunterCrew:
+    # ..
+    @agent
+    def job_matching_agent(self):
+        return Agent(
+            config=self.agents_config["job_matching_agent"],
+            knowledge_sources=[resume_knowledge],
+        )
+```
