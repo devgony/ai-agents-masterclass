@@ -338,3 +338,29 @@ class JobHunterCrew:
             knowledge_sources=[resume_knowledge],
         )
 ```
+
+# 5 CrewAI: Content Pipeline Agent
+
+## 5.0 Introduction
+
+- Flows: more control than Crew, less than LangGraph
+  - it handles conditional branching
+
+```sh
+uv init content-pipeline-agent
+cp job-hunter-agent/tools.py content-pipeline-agent/tools.py
+cp job-hunter-agent/.env content-pipeline-agent/.env
+cat <<'EOF' > content-pipeline-agent/pyproject.toml
+[project]
+name = "content-pipeline-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "crewai[tools]>=0.152.0",
+    "firecrawl-py==2.16.3",
+    "python-dotenv>=1.1.1",
+]
+EOF
+```
