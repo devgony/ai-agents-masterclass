@@ -217,3 +217,28 @@ EOF
 ## 3.3 News Reader Tasks and Agents
 
 - prompting is more important than coding
+
+## 3.4 News Reader Crew
+
+- Search tool: [Serper API](https://serper.dev)
+- Scraping tool: playwright, bs4
+  - remove unneeded html tags
+- Content-harvaest -> summarize
+
+| Mechanism                      | Used in this project? | Description                                                           |
+| ------------------------------ | --------------------- | --------------------------------------------------------------------- |
+| @task definition order         | ✅                    | self.tasks collected in definition order → determines execution order |
+| Sequential Process (default)   | ✅                    | Previous task output automatically passed as next task's context      |
+| Explicit context=[] assignment | ❌                    | Not used. Unnecessary since execution is sequential                   |
+| Natural language refs in YAML  | ✅                    | Prompts guide the agent on how to utilize previous results            |
+
+```
+content_harvesting_task
+↓ output (markdown doc: collected news articles)
+↓ automatically injected into next task's context
+summarization_task
+↓ output (markdown doc: multi-level summary)
+↓ automatically injected into next task's context
+final_report_assembly_task
+→ output (final news briefing report)
+```
