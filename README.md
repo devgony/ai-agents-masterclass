@@ -267,3 +267,16 @@ dependencies = [
 
 - Knowledge source feature
 - add [FIRECRWLER_API_KEY](https://www.firecrawl.dev/app/api-keys) to .env
+
+## 4.1 Agents and Tasks
+
+- JSON matching with schema can save prompting tokens
+
+```sh
+mkdir -p job-hunter-agent/config \
+job-hunter-agent/knowledge
+touch job-hunter-agent/config/agents.yaml \
+job-hunter-agent/config/tasks.yaml \
+job-hunter-agent/knowledge/resume.txt
+mv job-hunter-agent/hello.py job-hunter-agent/main.py
+```
