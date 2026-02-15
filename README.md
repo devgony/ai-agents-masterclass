@@ -280,3 +280,26 @@ job-hunter-agent/config/tasks.yaml \
 job-hunter-agent/knowledge/resume.txt
 mv job-hunter-agent/hello.py job-hunter-agent/main.py
 ```
+
+## 4.2 Context And Structured Outputs
+
+- Structured output with Pydantic models can increase reliability of results
+
+```sh
+touch job-hunter-agent/models.py
+```
+
+- if the flow is not linear, use `context` field
+
+```python
+@task
+def interview_prep_task(self):
+    return Task(
+        config=self.tasks_config["interview_prep_task"],
+        context=[
+            self.job_selection_task(),
+            self.resume_rewriting_task(),
+            self.company_research_task(),
+        ],
+    )
+```
