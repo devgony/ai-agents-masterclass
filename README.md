@@ -242,3 +242,28 @@ summarization_task
 final_report_assembly_task
 → output (final news briefing report)
 ```
+
+# 4 CrewAI: Job Hunter Agent
+
+## 4.0 Introduction
+
+```sh
+uv init job-hunter-agent
+```
+
+```toml
+[project]
+name = "job-hunter-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "crewai[tools]>=0.152.0",
+    "firecrawl-py==2.16.3",
+    "python-dotenv>=1.1.1",
+]
+```
+
+- Knowledge source feature
+- add [FIRECRWLER_API_KEY](https://www.firecrawl.dev/app/api-keys) to .env
