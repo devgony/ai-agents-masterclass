@@ -499,3 +499,7 @@ content-pipeline-agent/virality_crew.py
 ```
 
 - if there are various tasks, the last ouput of task will be the total ouput of crew
+
+## 5.6 Conclusions
+
+- LLM.call() returns pydantic model properly now.

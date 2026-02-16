@@ -108,6 +108,7 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
             """
             )
         else:
+            print("Remaking blog.")
             result = llm.call(
                 f"""
             You wrote this blog post on {self.state.topic}, but it does not have a good SEO score because of {self.state.score.reason} 
@@ -128,7 +129,7 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
             """
             )
 
-        self.state.blog_post = BlogPost.model_validate_json(result)
+        self.state.blog_post = result if isinstance(result, BlogPost) else BlogPost.model_validate_json(result)
 
     @listen(or_("make_tweet", "remake_tweet"))
     def handle_make_tweet(self):
@@ -170,7 +171,7 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
             """
             )
 
-        self.state.tweet = Tweet.model_validate_json(result)
+        self.state.tweet = result if isinstance(result, Tweet) else Tweet.model_validate_json(result)
 
     @listen(or_("make_linkedin_post", "remake_linkedin_post"))
     def handle_make_linkedin_post(self):
@@ -212,7 +213,7 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
             """
             )
 
-        self.state.linkedin_post = LinkedInPost.model_validate_json(result)
+        self.state.linkedin_post = result if isinstance(result, LinkedInPost) else LinkedInPost.model_validate_json(result)
 
     @listen(handle_make_blog)
     def check_seo(self):
@@ -239,9 +240,9 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
                     "topic": self.state.topic,
                     "content_type": self.state.content_type,
                     "content": (
-                        self.state.tweet
-                        if self.state.contenty_type == "tweet"
-                        else self.state.linkedin_post
+                        self.state.tweet.model_dump_json()
+                        if self.state.content_type == "tweet"
+                        else self.state.linkedin_post.model_dump_json()
                     ),
                 }
             )
@@ -254,7 +255,7 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
         content_type = self.state.content_type
         score = self.state.score
 
-        if score.score >= 8:
+        if score.score >= 7:
             return "check_passed"
         else:
             if content_type == "blog":
@@ -266,7 +267,29 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
 
     @listen("check_passed")
     def finalize_content(self):
-        print("Finalizing content")
+        """Finalize the content"""
+        print("🎉 Finalizing content...")
+
+        if self.state.content_type == "blog":
+            print(f"📝 Blog Post: {self.state.blog_post.title}")
+            print(f"🔍 SEO Score: {self.state.score.score}/100")
+        elif self.state.content_type == "tweet":
+            print(f"🐦 Tweet: {self.state.tweet}")
+            print(f"🚀 Virality Score: {self.state.score.score}/100")
+        elif self.state.content_type == "linkedin":
+            print(f"💼 LinkedIn: {self.state.linkedin_post.title}")
+            print(f"🚀 Virality Score: {self.state.score.score}/100")
+
+        print("✅ Content ready for publication!")
+        return (
+            self.state.linkedin_post
+            if self.state.content_type == "linkedin"
+            else (
+                self.state.tweet
+                if self.state.content_type == "tweet"
+                else self.state.blog_post
+            )
+        )
 
 
 flow = ContentPipelineFlow()
