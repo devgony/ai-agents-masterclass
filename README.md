@@ -507,3 +507,40 @@ content-pipeline-agent/virality_crew.py
 ## 5.7 Outro
 
 - check more attributes like max_iter, max_execution_time
+
+# 6 Autogen: Grok Deep Research Agent
+
+# 6.0 Introducton
+
+- grandfather from MS
+- Studio
+- AgentChat
+- Core
+- Extensions
+
+```sh
+uv init deep-research-clone
+cp job-hunter-agent/tools.py deep-research-clone/tools.py
+cp job-hunter-agent/.env deep-research-clone/.env
+mv deep-research-clone/hello.py deep-research-clone/main.py
+cat <<'EOF' > deep-research-clone/pyproject.toml
+[project]
+name = "deep-research-clone"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "autogen>=0.9.7",
+    "autogen-agentchat>=0.7.2",
+    "autogen-ext[openai]>=0.7.2",
+    "firecrawl-py==2.16.5",
+    "python-dotenv>=1.1.1",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
+]
+EOF
+```
