@@ -418,3 +418,72 @@ mv content-pipeline-agent/hello.py content-pipeline-agent/main.py
 
 - we could ask the score of SEO and virality to AI and re-try if it is low score
 - listen `remake_*` and conditionally show previous content
+
+## 5.4 LLMs and Agents
+
+- use only one agent
+
+```python
+@listen(init_content_pipeline)
+def conduct_research(self):
+
+    researcher = Agent(
+        role="Head Researcher",
+        backstory="You're like a digital detective who loves digging up fascinating facts and insights. You have a knack for finding the good stuff that others miss.",
+        goal=f"Find the most interesting and useful info about {self.state.topic}",
+        tools=[web_search_tool],
+    )
+
+    self.state.research = researcher.kickoff(
+        f"Find the most interesting and useful info about {self.state.topic}"
+    )
+```
+
+- handle_blog_make
+
+```python
+class BlogPost(BaseModel):
+    title: str
+    subtitle: str
+    sections: List[str]
+#..
+@listen(or_("make_blog", "remake_blog"))
+def handle_make_blog(self):
+
+    blog_post = self.state.blog_post
+
+    llm = LLM(model="openai/o4-mini", response_format=BlogPost)
+
+    if blog_post is None:
+        self.state.blog_post = llm.call(
+            f"""
+        Make a blog post on the topic {self.state.topic} using the following research:
+
+        <research>
+        ================
+        {self.state.research}
+        ================
+        </research>
+        """
+        )
+    else:
+        self.state.blog_post = llm.call(
+            f"""
+        You wrote this blog post on {self.state.topic}, but it does not have a good SEO score because of {self.state.score.reason}
+
+        Improve it.
+
+        <blog post>
+        {self.state.blog_post.model_dump_json()}
+        </blog post>
+
+        Use the following research.
+
+        <research>
+        ================
+        {self.state.research}
+        ================
+        </research>
+        """
+        )
+```
