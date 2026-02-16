@@ -409,3 +409,9 @@ class MyFirstFlowState(BaseModel):
 ```sh
 mv content-pipeline-agent/hello.py content-pipeline-agent/main.py
 ```
+
+## 5.2 Content Pipeline Flow
+
+![content-pipeline-agent-flow-1](./images/content-pipeline-agent-flow-1.png)
+
+- we could measure the score of SEO and virality and re-try if it is low score
