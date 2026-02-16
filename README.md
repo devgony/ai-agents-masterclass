@@ -414,4 +414,7 @@ mv content-pipeline-agent/hello.py content-pipeline-agent/main.py
 
 ![content-pipeline-agent-flow-1](./images/content-pipeline-agent-flow-1.png)
 
-- we could measure the score of SEO and virality and re-try if it is low score
+## 5.3 Refinement Loop
+
+- we could ask the score of SEO and virality to AI and re-try if it is low score
+- listen `remake_*` and conditionally show previous content
