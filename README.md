@@ -503,3 +503,7 @@ content-pipeline-agent/virality_crew.py
 ## 5.6 Conclusions
 
 - LLM.call() returns pydantic model properly now.
+
+## 5.7 Outro
+
+- check more attributes like max_iter, max_execution_time
