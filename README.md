@@ -487,3 +487,15 @@ def handle_make_blog(self):
         """
         )
 ```
+
+## 5.5 Adding Crews To Flows
+
+- implement handle_make_tweet and handle_make_linkedin_post
+- add ViralityCrew and SeoCrew to measure score of virality and SEO
+
+```sh
+touch content-pipeline-agent/seo_crew.py \
+content-pipeline-agent/virality_crew.py
+```
+
+- if there are various tasks, the last ouput of task will be the total ouput of crew
