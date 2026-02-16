@@ -364,3 +364,48 @@ dependencies = [
 ]
 EOF
 ```
+
+## 5.1 Your First Flow
+
+- class flow
+  - has bunch of methods with `and_`, `or_`
+
+```python
+class MyFirstFlow(Flow[MyFirstFlowState]):
+    @start()
+    def first(self):
+        print(self.state.user_id)
+        print("Hello")
+
+    @listen(first)
+    def second(self):
+        self.state.user_id = 2
+        print("world")
+```
+
+- router: control flow with conditions
+
+```python
+@router(final)
+def route(self):
+    if self.state.is_admin:
+        return "even"
+    else:
+        return "odd"
+```
+
+- state of flow
+  - unstructured
+  - can be with pydantic model
+
+```python
+class MyFirstFlowState(BaseModel):
+    user_id: int = 1
+    is_admin: bool = False
+```
+
+- plot(): draws diagram
+
+```sh
+mv content-pipeline-agent/hello.py content-pipeline-agent/main.py
+```
