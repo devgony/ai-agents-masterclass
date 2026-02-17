@@ -642,11 +642,26 @@ EOF
 - hand-off: transfer to other agent
 
 ```python
-touch chatgpt-clone/dummy-agent.ipynb
+touch chatgpt-clone/1-dummy-agent-stream.ipynb
 ```
 
 - raw_response_event: 가장 low level 의 실시간 정보를 제공
 
 ```sh
 uv run python -m ipykernel install --user --name chatgpt-clone
+```
+
+## 7.3 Session Memory
+
+- in ipynb, run(sync) and async_run is identical -> should be async in production
+- save to SQLiteSession
+
+```python
+session = SQLiteSession("user_1", "ai-memory.db")
+#..
+result = await Runner.run(
+    agent,
+    "What was my name again?",
+    session=session,
+)
 ```
