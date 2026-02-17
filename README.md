@@ -576,3 +576,15 @@ team = RoundRobinGroupChat(
     termination_condition=termination_condition,
 )
 ```
+
+## 6.2 Deep Research
+
+- SelectorGroupChat: implements a team where participants take turns broadcasting messages to all other members. A generative model (e.g., an LLM) selects the next speaker based on the shared context, enabling dynamic, context-aware collaboration.
+- human in the loop
+- our representative
+- use nano -> has bigger context window
+- add save_report_to_md tool
+
+```sh
+touch deep-research-clone/deep-research-team.ipynb
+```

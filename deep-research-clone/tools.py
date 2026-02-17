@@ -1,14 +1,13 @@
 import os
+import datetime
 import dotenv
 
 dotenv.load_dotenv()
 
 import requests
 import re
-from crewai.tools import tool
 
 
-@tool
 def web_search_tool(query: str):
     """
     Web Search Tool.
@@ -54,3 +53,10 @@ def web_search_tool(query: str):
         cleaned_chunks.append(cleaned_result)
 
     return cleaned_chunks
+
+
+def save_report_to_md(content: str) -> str:
+    """Save report content to report.md file."""
+    with open("report.md", "w") as f:
+        f.write(content)
+    return "report.md"
