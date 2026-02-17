@@ -588,3 +588,40 @@ team = RoundRobinGroupChat(
 ```sh
 touch deep-research-clone/deep-research-team.ipynb
 ```
+
+# 7 Introducing OpenAI Agents SDK
+
+## 7.0 Introduction
+
+- swarm -> OPENAI AGENTS SDK
+- other model except for openai does not integrate well
+- very few abstractions
+- primitives
+  - agents
+  - handoffs
+  - guardrails
+  - sessions
+
+```sh
+uv init chatgpt-clone
+mv chatgpt-clone/hello.py chatgpt-clone/main.py
+cat <<'EOF' > chatgpt-clone/pyproject.toml
+[project]
+name = "chatgpt-clone"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "graphviz>=0.21",
+    "openai-agents[viz]>=0.2.6",
+    "python-dotenv>=1.1.1",
+    "streamlit>=1.48.0",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
+]
+EOF
+```
