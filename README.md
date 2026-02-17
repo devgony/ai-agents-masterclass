@@ -544,3 +544,35 @@ dev = [
 ]
 EOF
 ```
+
+## 6.1 Email Optimizer Team
+
+```sh
+uv run python -m ipykernel install --user --name deep-research-clone --display-name "deep-research-clone"
+```
+
+- team > agent
+- RoundRobinGroupChat: A team chat where each agent takes turns responding in a round-robin fashion.
+  - can be like Refinement Loop
+    - MaxMessageTermination: stop when the message count reaches the limit
+    - TextTermination: stop when a message contains specific text
+
+```python
+text_termination = TextMentionTermination("TERMINATE")
+max_messages_termination = MaxMessageTermination(max_messages=30)
+
+termination_condition = text_termination | max_messages_termination
+```
+
+```python
+team = RoundRobinGroupChat(
+    participants=[
+        clarity_agent,
+        tone_agent,
+        persuasion_agent,
+        synthesizer_agent,
+        critic_agent,
+    ],
+    termination_condition=termination_condition,
+)
+```
