@@ -665,3 +665,25 @@ result = await Runner.run(
     session=session,
 )
 ```
+
+## 7.4 Handoffs
+
+- transfer to other agent
+- handoff_description
+
+```python
+economics_agent = Agent(
+    name="Economics Expert Agent",
+    instructions="You are a expert in economics, you answer questions related to them.",
+    handoff_description="Use this to answer economics questions.",
+)
+
+main_agent = Agent(
+    name="Main Agent",
+    instructions="You are a user facing agent. Transfer to the agent most capable of answering the user's question.",
+    handoffs=[
+        economics_agent,
+        geaography_agent,
+    ],
+)
+```
