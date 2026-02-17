@@ -625,3 +625,28 @@ dev = [
 ]
 EOF
 ```
+
+## 7.1 Agents and Runners
+
+- dummy agent
+- Runner: while true loop
+  - main take input and main agent
+  - run_streamed
+- RawResponsesStreamEvent
+- RunItemStreamEvent
+
+- OpenAI SDK helps to create swarm of agents
+
+## 7.2 Stream Events
+
+- hand-off: transfer to other agent
+
+```python
+touch chatgpt-clone/dummy-agent.ipynb
+```
+
+- raw_response_event: 가장 low level 의 실시간 정보를 제공
+
+```sh
+uv run python -m ipykernel install --user --name chatgpt-clone
+```
