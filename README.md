@@ -687,3 +687,8 @@ main_agent = Agent(
     ],
 )
 ```
+
+## 7.5 Viz and Structured Outputs
+
+- draw_graph shows diagram
+- structured output with pydantic model
