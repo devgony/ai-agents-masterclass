@@ -692,3 +692,23 @@ main_agent = Agent(
 
 - draw_graph shows diagram
 - structured output with pydantic model
+
+## 7.6 Tracing
+
+- <https://platform.openai.com/logs?api=traces>
+- merge into same trace
+
+```python
+with trace("user_111111"):
+    result = await Runner.run(
+        main_agent,
+        "What is the capital of Colombia's northen province.",
+        session=session,
+    )
+
+    result = await Runner.run(
+        main_agent,
+        "What is the capital of Cambodia's northen province.",
+        session=session,
+    )
+```
