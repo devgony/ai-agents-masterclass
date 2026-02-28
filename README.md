@@ -716,9 +716,7 @@ with trace("user_111111"):
 ## 7.8 Welcome To Streamlit
 
 ```sh
-cd chatgpt-clone
-. .venv/bin/activate
-streamlit run main.py
+uv run streamlit run chatgpt-clone/main.py
 ```
 
 ## 7.9 Streamlit Data Flow
@@ -727,3 +725,14 @@ streamlit run main.py
   - if condition is common way to solve this
 - persistant data without reset
   - session_state
+
+# 8 OpenAI Agents SDK: ChatGPT Clone
+
+## 8.0 Chat UI
+
+- session with sqlite
+- add .env with OPENAI_API_KEY
+
+```python
+streamlit.errors.StreamlitAPIException: st.write_stream expects a generator or stream-like object as input not <class 'str'>. Please use st.write instead for this data type.
+```
