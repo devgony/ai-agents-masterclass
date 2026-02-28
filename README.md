@@ -720,3 +720,10 @@ cd chatgpt-clone
 . .venv/bin/activate
 streamlit run main.py
 ```
+
+## 7.9 Streamlit Data Flow
+
+- code will run from top to bottom and re-render when user input changes
+  - if condition is common way to solve this
+- persistant data without reset
+  - session_state
