@@ -712,3 +712,11 @@ with trace("user_111111"):
         session=session,
     )
 ```
+
+## 7.8 Welcome To Streamlit
+
+```sh
+cd chatgpt-clone
+. .venv/bin/activate
+streamlit run main.py
+```
